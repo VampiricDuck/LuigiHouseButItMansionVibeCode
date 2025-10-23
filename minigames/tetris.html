@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Tetris - Dev</title>
+  <style>
+    body{background:#071018;color:#e6f7f4;font-family:system-ui,Segoe UI,Arial;display:flex;align-items:center;justify-content:center;height:100vh;margin:0}
+    #wrap{display:flex;gap:12px}
+    canvas{background:#041018;border-radius:8px}
+    .controls{position:fixed;top:16px;left:16px}
+  </style>
+</head>
+<body>
+  <div class="controls"><button id="reset">Reset</button></div>
+  <div id="wrap">
+    <canvas id="t" width="200" height="400"></canvas>
+  </div>
+  <script>
+    // minimal tetris
+    const cvs=document.getElementById('t');const ctx=cvs.getContext('2d');const cols=10,rows=20,cell=20;
+    let grid=Array(rows).fill(0).map(()=>Array(cols).fill(0));
+    const pieces=[
+      [[1,1,1,1]],
+      [[1,1],[1,1]],
+      [[0,1,1],[1,1,0]],
+      [[1,1,0],[0,1,1]],
+      [[1,0,0],[1,1,1]],
+      [[0,0,1],[1,1,1]],
+      [[0,1,0],[1,1,1]]
+    ];
+    function rnd(){return pieces[Math.floor(Math.random()*pieces.length)];}
+    let piece={shape:rnd(),x:3,y:0};let running=false;
+    function draw(){ctx.fillStyle='#041018';ctx.fillRect(0,0,cvs.width,cvs.height);for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){if(grid[r][c]){ctx.fillStyle='#79ff8a';ctx.fillRect(c*cell,r*cell,cell-1,cell-1)}}
+      // draw piece
+      for(let r=0;r<piece.shape.length;r++)for(let c=0;c<piece.shape[r].length;c++){if(piece.shape[r][c]){ctx.fillStyle='#b88cff';ctx.fillRect((piece.x+c)*cell,(piece.y+r)*cell,cell-1,cell-1)}}
+    }
+    function collide(nx,ny,shape){for(let r=0;r<shape.length;r++)for(let c=0;c<shape[r].length;c++)if(shape[r][c]){const rr=ny+r,cc=nx+c;if(rr<0||rr>=rows||cc<0||cc>=cols||grid[rr][cc]) return true}return false}
+    function place(){for(let r=0;r<piece.shape.length;r++)for(let c=0;c<piece.shape[r].length;c++)if(piece.shape[r][c]) grid[piece.y+r][piece.x+c]=1;clearLines();piece={shape:rnd(),x:3,y:0};if(collide(piece.x,piece.y,piece.shape)){running=false;alert('Game over')}}
+    function rotate(s){const h=s.length,w=s[0].length;let out=Array(w).fill(0).map(()=>Array(h).fill(0));for(let r=0;r<h;r++)for(let c=0;c<w;c++)out[c][h-1-r]=s[r][c];return out}
+    function clearLines(){for(let r=rows-1;r>=0;r--){if(grid[r].every(v=>v)){grid.splice(r,1);grid.unshift(Array(cols).fill(0));r++;}}}
+    function step(){if(!running) return; if(!collide(piece.x,piece.y+1,piece.shape)){piece.y++;}else{place()}draw();setTimeout(step,350)}
+    document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'&&!collide(piece.x-1,piece.y,piece.shape))piece.x--;if(e.key==='ArrowRight'&&!collide(piece.x+1,piece.y,piece.shape))piece.x++;if(e.key==='ArrowDown'&&!collide(piece.x,piece.y+1,piece.shape))piece.y++;if(e.key===' ') {piece.shape=rotate(piece.shape);}if(!running){running=true;step()}draw();});
+    document.getElementById('reset').addEventListener('click',()=>{grid=Array(rows).fill(0).map(()=>Array(cols).fill(0));piece={shape:rnd(),x:3,y:0};running=false;draw();});
+    draw();
+  </script>
+</body>
+</html>

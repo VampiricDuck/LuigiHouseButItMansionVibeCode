@@ -1,0 +1,6 @@
+#dev-test-btn{position:fixed;right:18px;bottom:18px;z-index:120;padding:10px 12px;border-radius:8px;background:#111827;color:#b8f7d1;border:1px solid rgba(120,255,138,0.08);cursor:pointer}
+#dev-dimmer-preview{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;z-index:130}
+.dev-card{background:linear-gradient(180deg,#041018,#021018);padding:16px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);color:var(--text);width:420px}
+.dev-card h3{margin:0 0 8px 0}
+.dev-actions{display:flex;gap:8px;margin-bottom:8px}
+.dev-links a{display:block;color:var(--accent);margin-top:6px}

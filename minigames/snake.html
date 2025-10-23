@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Snake - Dev</title>
+  <style>
+    body{background:#071018;color:#e6f7f4;font-family:system-ui,Segoe UI,Arial;display:flex;align-items:center;justify-content:center;height:100vh;margin:0}
+    canvas{background:#041018;border-radius:8px}
+    .controls{position:fixed;top:16px;left:16px}
+  </style>
+</head>
+<body>
+  <div class="controls"><button id="reset">Reset</button></div>
+  <canvas id="c" width="320" height="320"></canvas>
+  <script>
+    const cvs=document.getElementById('c');const ctx=cvs.getContext('2d');
+    const cell=16,cols=20,rows=20;let snake=[{x:10,y:10}];let dir={x:0,y:0};let food={x:5,y:5};let speed=150;let running=false;
+    function loop(){
+      if(!running) return;
+      const head={x:snake[0].x+dir.x,y:snake[0].y+dir.y};
+      if(head.x<0||head.x>=cols||head.y<0||head.y>=rows){running=false;alert('Game over');return}
+      if(snake.some(s=>s.x===head.x&&s.y===head.y)){running=false;alert('Game over');return}
+      snake.unshift(head);
+      if(head.x===food.x&&head.y===food.y){placeFood();}else{snake.pop()}
+      draw();
+      setTimeout(loop,speed);
+    }
+    function draw(){ctx.fillStyle='#041018';ctx.fillRect(0,0,cvs.width,cvs.height);ctx.fillStyle='#79ff8a';snake.forEach(s=>ctx.fillRect(s.x*cell,s.y*cell,cell-1,cell-1));ctx.fillStyle='#b88cff';ctx.fillRect(food.x*cell,food.y*cell,cell-1,cell-1)}
+    function placeFood(){food={x:Math.floor(Math.random()*cols),y:Math.floor(Math.random()*rows)};if(snake.some(s=>s.x===food.x&&s.y===food.y))placeFood()}
+    document.addEventListener('keydown',e=>{
+      if(e.key==='ArrowUp')dir={x:0,y:-1};
+      if(e.key==='ArrowDown')dir={x:0,y:1};
+      if(e.key==='ArrowLeft')dir={x:-1,y:0};
+      if(e.key==='ArrowRight')dir={x:1,y:0};
+      if(!running&& (dir.x!==0||dir.y!==0)){running=true;loop()}
+    });
+    document.getElementById('reset').addEventListener('click',()=>{snake=[{x:10,y:10}];dir={x:0,y:0};placeFood();running=false;draw();});
+    placeFood();draw();
+  </script>
+</body>
+</html>

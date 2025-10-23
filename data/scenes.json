@@ -1,0 +1,71 @@
+{
+  "scene1":{
+    "background":"",
+    "text":"You step onto the creaking porch of the old mansion. A chill wind whispers through the shutters.",
+    "choices":{
+      "bad":{
+        "text":"Run away and never look back.",
+        "courage":-10,
+        "next":"scene2_bad"
+      },
+      "meh":{
+        "text":"Call out a hesitant hello and step inside.",
+        "courage":0,
+        "next":"scene2_meh"
+      },
+      "good":{
+        "text":"Light your flashlight and push open the heavy door.",
+        "courage":10,
+        "next":"scene2_good"
+      }
+    }
+  },
+  "scene2_bad":{
+    "text":"You flee into the night. Later you hear rumors of a helpful ghost who needed rescue. Your courage shrinks.",
+    "choices":{
+      "bad":{ "text":"Ignore the rumors.", "courage":-5, "end":"You avoided danger, but missed a chance to help." },
+      "meh":{ "text":"Tell the story at the tavern.", "courage":0, "end":"A tale to scare children, and nothing more." },
+      "good":{ "text":"Return and attempt a rescue.", "courage":8, "end":"You faced your fear and found a grateful spirit." }
+    }
+  },
+  "scene2_meh":{
+    "text":"The foyer is draped in dust. A faint music box melody plays from upstairs.",
+    "choices":{
+      "bad":{ "text":"Call the police and leave.", "courage":-8, "end":"You chose safety over curiosity." },
+      "meh":{ "text":"Explore the ground floor carefully.", "courage":0, "end":"You found odd trinkets but no answers." },
+      "good":{ "text":"Climb the stairs toward the music.", "courage":10, "next":"scene3_attic" }
+    }
+  },
+  "scene2_good":{
+    "text":"The door groans open. Inside, portraits seem to watch you. A small glow flickers down the hall.",
+    "choices":{
+      "bad":{ "text":"Hide behind a curtain.", "courage":-6, "end":"Shadows feel safer than the truth." },
+      "meh":{ "text":"Follow the glow at a distance.", "courage":2, "next":"scene3_glow" },
+      "good":{ "text":"Call out to the ghost and offer help.", "courage":12, "next":"scene3_meet" }
+    }
+  },
+  "scene3_attic":{
+    "text":"Upstairs, the attic door is half-open. A child's laughter echoes, but the room is empty except for a toy chest.",
+    "choices":{
+      "bad":{ "text":"Smash the chest open recklessly.", "courage":-5, "end":"A burst of ectoplasm startles you and you run." },
+      "meh":{ "text":"Open the chest slowly.", "courage":3, "end":"A music box plays; you feel strangely calm." },
+      "good":{ "text":"Gently close the chest and leave a comforting note.", "courage":10, "end":"The child's giggle turns to a soft thank-you." }
+    }
+  },
+  "scene3_glow":{
+    "text":"You find a lantern on a table still warm. It seems recently used.",
+    "choices":{
+      "bad":{ "text":"Pocket the lantern and run.", "courage":-7, "end":"You leave the mansion but the lantern dims your conscience." },
+      "meh":{ "text":"Take the lantern for safety and continue.", "courage":2, "end":"You feel steadier and press on." },
+      "good":{ "text":"Use the lantern to light the portraits and speak kindly.", "courage":12, "end":"The portraits lower their gazes and one whispers thanks." }
+    }
+  },
+  "scene3_meet":{
+    "text":"A translucent figure appears — timid, lost. Its eyes plead for help.",
+    "choices":{
+      "bad":{ "text":"Shove it away and bolt for the door.", "courage":-12, "end":"You escaped, but the guilt follows." },
+      "meh":{ "text":"Listen and promise to search for its lost locket.", "courage":5, "end":"A small peace settles over the mansion." },
+      "good":{ "text":"Offer your hand and guide it to the light.", "courage":15, "end":"The spirit smiles and departs, and the mansion breathes easier." }
+    }
+  }
+}

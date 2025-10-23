@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Haunted Mansion — Prototype</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/dev.css">
+</head>
+<body>
+  <!-- Dev/Test floating button (temporary) -->
+  <button id="dev-test-btn" title="Dev tools">DEV</button>
+  <main id="game">
+    <div id="scene">
+  <img id="bg" alt="background"/>
+      <div id="dialogue">
+        <p id="text"></p>
+      </div>
+      <div id="choices" role="list"></div>
+    </div>
+    <div id="hud">
+      <div id="score">Courage: <span id="courage-score">0</span></div>
+      <div id="hud-controls">
+        <button id="btn-menu" aria-label="Open menu">Menu</button>
+        <button id="btn-save" aria-label="Quick save">Save</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Dev dimmer preview / quick links (temporary) -->
+  <div id="dev-dimmer-preview" hidden>
+    <div class="dev-card">
+      <h3>Dev Tools</h3>
+      <div class="dev-actions">
+        <button id="dev-toggle-dimmer">Toggle Dimmer Preview</button>
+        <button id="dev-close">Close</button>
+      </div>
+      <div class="dev-links">
+        <h4>Minigames (in-overlay)</h4>
+        <button type="button" data-game="minesweeper">Minesweeper (in-game)</button>
+        <button type="button" data-game="snake">Snake (in-game)</button>
+        <button type="button" data-game="tetris">Tetris (in-game)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Minigame overlay (embedded) -->
+  <div id="minigame-overlay" hidden>
+    <div id="minigame-wrapper">
+      <div id="minigame-header">
+        <button id="minigame-close">Close</button>
+        <div id="minigame-title">Minigame</div>
+      </div>
+      <div id="minigame-container"></div>
+    </div>
+  </div>
+
+  <!-- Main menu / save slots overlay -->
+  <div id="menu-overlay" role="dialog" aria-modal="true" hidden>
+    <div id="menu-card">
+      <h2>Vibe - Menu</h2>
+      <div class="menu-actions">
+        <button id="new-game">New Game</button>
+        <button id="continue">Continue</button>
+      </div>
+
+      <div class="slots">
+        <h3>Save Slots</h3>
+        <div class="slot-list">
+          <div class="slot" data-slot="1">
+            <div class="slot-info"><strong>Slot 1</strong><div class="slot-meta">empty</div></div>
+            <div class="slot-actions"><button class="load-slot">Load</button><button class="save-slot">Save</button><button class="clear-slot">Clear</button></div>
+          </div>
+          <div class="slot" data-slot="2">
+            <div class="slot-info"><strong>Slot 2</strong><div class="slot-meta">empty</div></div>
+            <div class="slot-actions"><button class="load-slot">Load</button><button class="save-slot">Save</button><button class="clear-slot">Clear</button></div>
+          </div>
+          <div class="slot" data-slot="3">
+            <div class="slot-info"><strong>Slot 3</strong><div class="slot-meta">empty</div></div>
+            <div class="slot-actions"><button class="load-slot">Load</button><button class="save-slot">Save</button><button class="clear-slot">Clear</button></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-footer">
+        <button id="quit-to-main">Quit to Main Menu</button>
+        <button id="close-menu">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fullscreen main menu shown on app start or when quitting -->
+  <div id="main-menu" role="dialog" aria-modal="true">
+    <div id="main-card">
+      <h1>Haunted Mansion</h1>
+      <p class="subtitle">A spooky, exploration-focused prototype — inspired by classic haunted mansion adventures</p>
+      <div class="main-actions">
+        <button id="main-new-game">New Game</button>
+        <button id="main-continue">Continue</button>
+      </div>
+      <div class="main-slot-preview">
+        <h4>Save slots</h4>
+        <div class="slot-preview-list">
+          <div class="slot-preview" data-slot="1">Slot 1: <span class="meta">empty</span></div>
+          <div class="slot-preview" data-slot="2">Slot 2: <span class="meta">empty</span></div>
+          <div class="slot-preview" data-slot="3">Slot 3: <span class="meta">empty</span></div>
+        </div>
+      </div>
+      <div class="main-footer">
+        <small>Press Start to begin — your progress can be saved from the in-game menu.</small>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/dev.js"></script>
+  <script src="js/dev-init.js"></script>
+  <script src="js/tetris-game.js"></script>
+  <script src="js/minesweeper-game.js"></script>
+  <script src="js/snake-game.js"></script>
+</body>
+</html>
