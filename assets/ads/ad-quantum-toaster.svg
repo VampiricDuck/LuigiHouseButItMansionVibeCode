@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="200" viewBox="0 0 600 200">
+  <rect width="100%" height="100%" fill="#0b2230" />
+  <g transform="translate(28,28)">
+    <rect x="0" y="0" width="140" height="140" rx="12" fill="#ffd86b" opacity="0.12"/>
+    <rect x="12" y="12" width="116" height="92" rx="8" fill="#8fb7ff"/>
+    <g font-family="'Helvetica Neue', Arial, sans-serif">
+      <text x="170" y="44" font-size="34" fill="#fff" font-weight="700">Quantum Toaster</text>
+      <text x="170" y="80" font-size="13" fill="#cfefff">Toasts your bread — and occasionally alternate timelines.</text>
+      <text x="170" y="108" font-size="11" fill="#cfefff" opacity="0.85">Includes crumb-trap and mild causality zipper.</text>
+    </g>
+  </g>
+</svg>

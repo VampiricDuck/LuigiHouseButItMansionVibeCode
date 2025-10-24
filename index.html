@@ -8,18 +8,25 @@
   <link rel="stylesheet" href="css/dev.css">
 </head>
 <body>
-  <!-- Dev/Test floating button (temporary) -->
-  <button id="dev-test-btn" title="Dev tools">DEV</button>
+  <!-- Help button and video overlay -->
+  <button id="help-btn" title="How to play">?</button>
+  <div id="help-overlay" hidden>
+    <div id="help-content">
+      <button id="close-help" aria-label="Close help">×</button>
+      <video id="help-video" controls>
+        <source src="assets/VID_20251024_124003981.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
   <main id="game">
     <div id="scene">
-  <img id="bg" alt="background"/>
       <div id="dialogue">
         <p id="text"></p>
       </div>
       <div id="choices" role="list"></div>
     </div>
     <div id="hud">
-      <div id="score">Courage: <span id="courage-score">0</span></div>
       <div id="hud-controls">
         <button id="btn-menu" aria-label="Open menu">Menu</button>
         <button id="btn-save" aria-label="Quick save">Save</button>
@@ -112,6 +119,8 @@
     </div>
   </div>
 
+  <script src="js/minigame-handler.js"></script>
+  <script src="js/minigame-controller.js"></script>
   <script src="js/app.js"></script>
   <script src="js/dev.js"></script>
   <script src="js/dev-init.js"></script>

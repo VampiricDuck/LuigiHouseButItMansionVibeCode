@@ -35,10 +35,14 @@ function openMinigame(name){
   container.innerHTML = '';
   // start known minigames
   if(name === 'minesweeper' && window.MiniGames && MiniGames.Minesweeper){
-    MiniGames.Minesweeper.start(container, (res)=>{
-      console.log('Minesweeper finished', res);
-      closeMinigame();
-    });
+    // Some minigames may return a cleanup function; capture it if provided
+    try{
+      const maybeCleanup = MiniGames.Minesweeper.start(container, (res)=>{
+        console.log('Minesweeper finished', res);
+        closeMinigame();
+      });
+      if(typeof maybeCleanup === 'function') currentCleanup = maybeCleanup;
+    }catch(err){ console.error('Failed to start Minesweeper', err); }
   }
   if(name === 'snake' && window.MiniGames && MiniGames.Snake){
     // Snake.start returns a cleanup; keep track to stop it
@@ -46,6 +50,21 @@ function openMinigame(name){
       console.log('Snake finished', res);
       closeMinigame();
     });
+  }
+  // Tetris: initialize if available (tetris-game.js provides MiniGames.Tetris.start)
+  if(name === 'tetris'){
+    if(window.MiniGames && MiniGames.Tetris && typeof MiniGames.Tetris.start === 'function'){
+      try{
+        const maybeCleanup = MiniGames.Tetris.start(container, (res)=>{
+          console.log('Tetris finished', res);
+          closeMinigame();
+        });
+        if(typeof maybeCleanup === 'function') currentCleanup = maybeCleanup;
+      }catch(err){ console.error('Failed to start Tetris', err); }
+    } else {
+      // If Tetris isn't loaded yet, show a small message so user isn't confused
+      container.innerHTML = '<div style="padding:12px;color:var(--text)">Tetris is not available yet. Try again in a moment.</div>';
+    }
   }
 }
 

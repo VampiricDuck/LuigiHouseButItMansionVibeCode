@@ -1,71 +1,163 @@
 {
   "scene1":{
-    "background":"",
-    "text":"You step onto the creaking porch of the old mansion. A chill wind whispers through the shutters.",
+    "text":"You step onto the creaking porch of the old mansion. The wood groans under your boots and a chill wind threads through shutter gaps, carrying something like a half-remembered lullaby. The air tastes of dust and rain.",
     "choices":{
       "bad":{
         "text":"Run away and never look back.",
-        "courage":-10,
         "next":"scene2_bad"
       },
       "meh":{
         "text":"Call out a hesitant hello and step inside.",
-        "courage":0,
         "next":"scene2_meh"
       },
       "good":{
         "text":"Light your flashlight and push open the heavy door.",
-        "courage":10,
         "next":"scene2_good"
       }
     }
   },
+
   "scene2_bad":{
-    "text":"You flee into the night. Later you hear rumors of a helpful ghost who needed rescue. Your courage shrinks.",
+    "text":"You flee into the night, heart hammering. The porch light swallows your silhouette and the mansion becomes a silhouette in a foggy memory. Later, whispers spin through the town about a lost spirit who once guided travelers — guilt and curiosity become twin weights.",
     "choices":{
-      "bad":{ "text":"Ignore the rumors.", "courage":-5, "end":"You avoided danger, but missed a chance to help." },
-      "meh":{ "text":"Tell the story at the tavern.", "courage":0, "end":"A tale to scare children, and nothing more." },
-      "good":{ "text":"Return and attempt a rescue.", "courage":8, "end":"You faced your fear and found a grateful spirit." }
+      "bad":{ "text":"Ignore the rumors and move on.", "courage":-5, "next":"scene3_settle" },
+      "meh":{ "text":"Tell the story at the tavern and wait for gossip to do the work.", "next":"scene3_tavern" },
+      "good":{ "text":"Return to the porch at dawn and search for signs of life.", "courage":8, "next":"scene3_return" }
     }
   },
-  "scene2_meh":{
-    "text":"The foyer is draped in dust. A faint music box melody plays from upstairs.",
+
+  "scene3_settle":{
+    "text":"You try to put the mansion behind you. Months pass; sometimes a child hums the same lullaby, and it pricks at your ribs. One evening you realize you dream of the house more than you dream of anything else.",
     "choices":{
-      "bad":{ "text":"Call the police and leave.", "courage":-8, "end":"You chose safety over curiosity." },
-      "meh":{ "text":"Explore the ground floor carefully.", "courage":0, "end":"You found odd trinkets but no answers." },
-      "good":{ "text":"Climb the stairs toward the music.", "courage":10, "next":"scene3_attic" }
+      "bad":{ "text":"Convince yourself the world is better without more ghosts.", "courage":-6, "end":"You kept yourself safe, but the question lingers like a stone in a boot." },
+      "meh":{ "text":"Donate to a local charity instead and hope that's enough.", "courage":2, "end":"You do some good elsewhere, but the lullaby sometimes wakes you at night." },
+      "good":{ "text":"Finally go back and knock on the porch in the rain.", "courage":10, "next":"scene3_return" }
     }
   },
+
+  "scene3_tavern":{
+    "text":"At the tavern your story grows with each retelling. An old woman in the corner hushes the room and says she once saw a child leave a locket on the mantle. She gives you a scrap of paper with an address scrawled in ink.",
+    "choices":{
+      "bad":{ "text":"Scribble the address away and forget it.", "courage":-4, "end":"Rumors die quickly; you sleep easier but wonder about the locket." },
+      "meh":{ "text":"Visit the address the next day.", "courage":3, "next":"scene4_housevisit" },
+      "good":{ "text":"Ask the old woman more about the child and where they played.", "courage":8, "next":"scene4_investigate" }
+    }
+  },
+
+  "scene3_return":{
+    "text":"Back at the mansion, the porch smell is sharper. Footprints press into the soft path. A child's shoe, half-buried in moss, points toward the walled garden. You feel both dread and a strange, steady hope.",
+    "choices":{
+      "bad":{ "text":"Leave the shoe and retreat to safety.", "courage":-7, "end":"Your fear keeps you alive — and the shoe stays where it is." },
+      "meh":{ "text":"Follow the footprints cautiously.", "courage":3, "next":"scene4_garden" },
+      "good":{ "text":"Call out gently and promise you won't be afraid.", "courage":12, "next":"scene4_meetchild" }
+    }
+  },
+
+  "scene4_housevisit":{
+    "text":"The address leads to a narrow rowhouse. A woman with tired hands remembers a lost child who liked to hide in the mansion's attic. She points you to a trunk of toys, and tucked inside is a piece of ribbon that matches the child's shoe.",
+    "choices":{
+      "bad":{ "text":"Keep the ribbon for yourself and leave.", "courage":-6, "end":"The ribbon feels like a small prize, but guilt follows." },
+      "meh":{ "text":"Return to the mansion with the ribbon.", "courage":3, "next":"scene4_garden" },
+      "good":{ "text":"Ask the woman about the child's family and if they ever came back.", "courage":8, "next":"scene4_investigate" }
+    }
+  },
+
+  "scene4_investigate":{
+    "text":"You ask around until a neighbor remembers the child's name and a rumor about a locket lost in a hedge maze. The townsfolk's memory is patchwork but given enough patience, a pattern appears: someone cared and someone else forgot.",
+    "choices":{
+      "bad":{ "text":"Decide people are unreliable and give up.", "courage":-5, "end":"You walk away, certain you did all you could." },
+      "meh":{ "text":"Search the hedge maze at dusk.", "courage":2, "next":"scene5_hedge" },
+      "good":{ "text":"Gather help and search thoroughly with flashlights.", "courage":12, "next":"scene5_hedge" }
+    }
+  },
+
+  "scene4_garden":{
+    "text":"The walled garden is tangled but contained. The air tastes cleaner here. In the center is a sundial and a patch where the earth has been disturbed recently — small handprints smearing the soil.",
+    "choices":{
+      "bad":{ "text":"Run until you reach the gate and don't stop.", "courage":-8, "end":"You escape the immediate mystery, but the memory of small handprints visits your sleep." },
+      "meh":{ "text":"Search the soil for items.", "courage":3, "next":"scene5_hedge" },
+      "good":{ "text":"Call softly, telling the child you mean no harm.", "courage":10, "next":"scene5_meetchild" }
+    }
+  },
+
+  "scene5_hedge":{
+    "text":"In the maze you find a rusted tin box wedged into a root. Inside rests a locket, tarnished but intact. When you lift it, you feel something ease inside the house, like a held breath released.",
+    "choices":{
+      "bad":{ "text":"Pocket the locket as proof and leave.", "courage":-7, "end":"You have evidence, but the warmth that should have followed never comes." },
+      "meh":{ "text":"Bring the locket back to the attic and set it on the chest.", "courage":4, "next":"scene6_reunion" },
+      "good":{ "text":"Place the locket in the child's hand and speak the name you were told.", "courage":14, "next":"scene6_reunion" }
+    }
+  },
+
+  "scene5_meetchild":{
+    "text":"A small figure peers from the hedges — not quite a ghost, not quite a child — and its eyes light when you speak. It leans toward you, a curious warmth pulsing under translucent skin.",
+    "choices":{
+      "bad":{ "text":"Snap at it to go away.", "end":"You scare it into deeper hiding and regret it later." },
+      "meh":{ "text":"Offer a small toy you found.", "courage":3, "next":"scene6_reunion" },
+      "good":{ "text":"Kneel, tell it the name on the locket, and promise to help.", "courage":15, "next":"scene6_reunion" }
+    }
+  },
+
+  "scene6_reunion":{
+    "text":"When the locket touches familiar hands, the air seems to unclench. The house exhales: curtains tremble like a sigh, and the smallest ghost smiles as if relieved to be remembered. You feel the mansion loosen around its seams.",
+    "choices":{
+      "bad":{ "text":"Take credit and vanish from the story.", "courage":-6, "end":"You leave with a story to tell, but a quiet part of you is missing." },
+      "meh":{ "text":"Stay a short while and watch the house settle.", "courage":6, "end":"You see the mansion breathe easier and walk away with a softer heart." },
+      "good":{ "text":"Help the spirit move on and leave a note for those who might come after.", "courage":18, "end":"The spirit thanks you in a whisper; the mansion feels less heavy and your courage is rewarded." }
+    }
+  },
+
   "scene2_good":{
-    "text":"The door groans open. Inside, portraits seem to watch you. A small glow flickers down the hall.",
+    "text":"The door groans open and cool, scented air greets you: old paper, lavender, and something faintly metallic. Portraits along the entryway tilt their painted heads as if tracking your passage. Down the hall, a small glow wavers, like a lantern being carried by someone who remembers how to be kind.",
     "choices":{
       "bad":{ "text":"Hide behind a curtain.", "courage":-6, "end":"Shadows feel safer than the truth." },
       "meh":{ "text":"Follow the glow at a distance.", "courage":2, "next":"scene3_glow" },
       "good":{ "text":"Call out to the ghost and offer help.", "courage":12, "next":"scene3_meet" }
     }
   },
+
   "scene3_attic":{
-    "text":"Upstairs, the attic door is half-open. A child's laughter echoes, but the room is empty except for a toy chest.",
+    "text":"The attic door yawns half-open. When you push it further, a small chamber of things meets you: a cracked globe, a moth-eaten armchair, and a toy chest whose lacquer has flaked away. A child's laughter echoes as though it is replaying from the wood itself — memory made audible.",
     "choices":{
       "bad":{ "text":"Smash the chest open recklessly.", "courage":-5, "end":"A burst of ectoplasm startles you and you run." },
-      "meh":{ "text":"Open the chest slowly.", "courage":3, "end":"A music box plays; you feel strangely calm." },
-      "good":{ "text":"Gently close the chest and leave a comforting note.", "courage":10, "end":"The child's giggle turns to a soft thank-you." }
+      "meh":{ "text":"Open the chest slowly and look for clues.", "courage":3, "next":"scene4_investigate" },
+      "good":{ "text":"Gently close the chest and leave a comforting note.", "courage":10, "next":"scene4_garden" }
     }
   },
+
   "scene3_glow":{
-    "text":"You find a lantern on a table still warm. It seems recently used.",
+    "text":"On a side table sits a lantern, its metal still warm to the touch as if someone had just set it down. The flame has long since died, but the warmth suggests a presence that was here not long ago. The portraits' eyes now seem less hostile and more inquisitive.",
     "choices":{
       "bad":{ "text":"Pocket the lantern and run.", "courage":-7, "end":"You leave the mansion but the lantern dims your conscience." },
-      "meh":{ "text":"Take the lantern for safety and continue.", "courage":2, "end":"You feel steadier and press on." },
-      "good":{ "text":"Use the lantern to light the portraits and speak kindly.", "courage":12, "end":"The portraits lower their gazes and one whispers thanks." }
+      "meh":{ "text":"Take the lantern and search for other signs.", "courage":2, "next":"scene4_investigate" },
+      "good":{ "text":"Use the lantern to light the portraits and speak kindly.", "courage":12, "next":"scene4_garden" }
     }
   },
+
   "scene3_meet":{
-    "text":"A translucent figure appears — timid, lost. Its eyes plead for help.",
+    "text":"A translucent figure steps from the shadows, no larger than a person and twice as fragile. It regards you with an expression that is part hope, part apology. When it speaks, its voice is like pages turning: distant and full of unfinished sentences. It asks — without words — for something it cannot find.",
     "choices":{
       "bad":{ "text":"Shove it away and bolt for the door.", "courage":-12, "end":"You escaped, but the guilt follows." },
-      "meh":{ "text":"Listen and promise to search for its lost locket.", "courage":5, "end":"A small peace settles over the mansion." },
-      "good":{ "text":"Offer your hand and guide it to the light.", "courage":15, "end":"The spirit smiles and departs, and the mansion breathes easier." }
+      "meh":{ "text":"Listen and promise to search for its lost locket.", "courage":5, "next":"scene4_garden" },
+      "good":{ "text":"Offer your hand and guide it to the light.", "courage":15, "next":"scene5_meetchild" }
+    }
+  },
+
+  "scene4_meet":{
+    "text":"The portrait you lit is older than the others. Its painted mouth quirks as if listening to an old joke. For a beat, the portrait seems closer to life, then settles again. You feel you are being watched — this time with gratitude.",
+    "choices":{
+      "bad":{ "text":"Smirk at the idea and walk away.", "courage":-5, "end":"You leave, unsettled but unchanged." },
+      "meh":{ "text":"Search the hall for more clues.", "courage":2, "next":"scene4_garden" },
+      "good":{ "text":"Speak gently to the portraits and ask if they remember a child's name.", "courage":10, "next":"scene5_meetchild" }
+    }
+  },
+
+  "scene5_guidetheghost":{
+    "text":"You take the ghost's hand. It is cool and surprisingly solid. Together you walk toward the light at the end of the hall. Each step feels like closing a sentence that had been left open.",
+    "choices":{
+      "bad":{ "text":"Let go before the doorway and run.", "courage":-9, "end":"You flee, burdened by the weight of an unfinished kindness." },
+      "meh":{ "text":"Stand in the doorway and watch the light.", "courage":4, "end":"The light fades but the feeling of peace is partial; you leave with questions answered incompletely." },
+      "good":{ "text":"Walk through and help the spirit step into whatever comes next.", "courage":18, "end":"A hush falls. When you look back, the mansion feels a degree lighter and you have earned something like grace." }
     }
   }
 }

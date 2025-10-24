@@ -2,11 +2,29 @@
 *{box-sizing:border-box}
 #app-root,html,body,#game{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Arial}
 /* page background fallback to ensure dark theme even when images are missing */
-html,body{background:linear-gradient(180deg,#020409,var(--bg));color:var(--text);}
-#game{background:linear-gradient(180deg,rgba(0,0,0,0.3),rgba(0,0,0,0.5));}
-#game{width:900px;max-width:95%;height:620px;position:relative;border-radius:12px;overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,.7)}
+html,body{
+  background:linear-gradient(180deg,#020409,var(--bg));
+  color:var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 20px;
+}
+#game{
+  background:linear-gradient(180deg,rgba(0,0,0,0.3),rgba(0,0,0,0.5));
+  width:900px;
+  max-width:95%;
+  height:620px;
+  position:relative;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 14px 40px rgba(0,0,0,.7);
+  margin: auto;
+}
 #scene{position:relative;width:100%;height:100%}
-#bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55) hue-rotate(10deg);background-color:#020409}
+/* Background image removed: scenes now rely on text and UI for atmosphere */
 /* dialogue box: stronger contrast and slight blur to separate from background */
 #dialogue{position:absolute;left:24px;right:24px;bottom:110px;padding:20px;background:rgba(3,6,10,0.88);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 8px 30px rgba(0,0,0,0.6)}
 #dialogue p{margin:0;padding:0;font-size:20px;line-height:1.5;font-family: 'Georgia', serif;color:#ffffff;text-shadow:0 2px 8px rgba(0,0,0,0.7)}
@@ -23,15 +41,23 @@ html,body{background:linear-gradient(180deg,#020409,var(--bg));color:var(--text)
 
 #menu-overlay{position:fixed;inset:0;background:linear-gradient(rgba(2,6,23,.55),rgba(2,6,23,.75));display:flex;align-items:center;justify-content:center}
 #menu-overlay[hidden]{display:none}
+/* Minigame overlay styling */
+#minigame-overlay{position:fixed;inset:0;background:linear-gradient(rgba(2,6,23,.6),rgba(2,6,23,.85));display:flex;align-items:center;justify-content:center;z-index:80}
+#minigame-overlay[hidden]{display:none}
+#minigame-wrapper{width:760px;max-width:95%;background:linear-gradient(180deg,#02060a,#021018);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 22px 60px rgba(0,0,0,0.75);color:var(--text)}
+#minigame-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+#minigame-container{min-height:360px;display:flex;align-items:center;justify-content:center}
 .menu-card{width:720px;max-width:95%;background:linear-gradient(180deg,#030812,#041018);padding:18px;border-radius:12px;border:1px solid rgba(120,255,138,0.03);box-shadow:0 22px 60px rgba(0,0,0,0.75);color:var(--text)}
 .menu-actions{display:flex;gap:10px;margin-bottom:12px}
-.menu-actions button{flex:1;padding:10px;border-radius:8px;background:#0e2636;border:1px solid rgba(255,255,255,.03);cursor:pointer}
+.menu-actions button{flex:1;padding:10px;border-radius:8px;background:#0e2636;border:1px solid rgba(255,255,255,.03);cursor:pointer;color:var(--text);font-weight:600}
 .slots{margin-top:8px}
 .slot-list{display:flex;gap:8px}
 .slot{flex:1;background:#071526;padding:10px;border-radius:8px;display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(255,255,255,.02)}
 .slot-meta{font-size:12px;color:#9fb6d9}
-.slot-actions button{margin-left:6px;padding:6px 8px;border-radius:6px;background:#0b2230;border:1px solid rgba(255,255,255,.03);cursor:pointer}
+.slot-actions button{margin-left:6px;padding:6px 8px;border-radius:6px;background:#0b2230;border:1px solid rgba(255,255,255,.03);cursor:pointer;color:var(--text);font-weight:600}
 .menu-footer{display:flex;justify-content:flex-end;margin-top:12px}
+/* make footer buttons in the menu more readable */
+.menu-footer button{color:var(--text);background:#0b2230;border:1px solid rgba(255,255,255,0.03);padding:8px 10px;border-radius:8px;font-weight:600}
 
 /* Fullscreen main menu (darker) */
 #main-menu{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(1,4,6,0.94),rgba(3,6,10,0.98));z-index:60}

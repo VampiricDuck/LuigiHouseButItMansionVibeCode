@@ -1,12 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
-  <title>Snake - Inlined</title>
-  <meta name="robots" content="noindex" />
-  <style>body{background:#071018;color:#e6f7f4;font-family:system-ui,Segoe UI,Arial;display:flex;align-items:center;justify-content:center;height:100vh;margin:0}</style>
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/dev.css">
 </head>
 <body>
-  <p style="padding:20px">This minigame has been inlined into the main application. See `js/snake-game.js`.</p>
+    <div id="game-container"></div>
+    <script src="../js/snake-game.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            const container = document.getElementById('game-container');
+            window.MiniGames.Snake.start(container, (result) => {
+                console.log('Game finished:', result);
+            });
+        });
+    </script>
 </body>
 </html>

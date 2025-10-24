@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="200" viewBox="0 0 600 200">
+  <rect width="100%" height="100%" fill="#07121a"/>
+  <g transform="translate(36,26)">
+    <rect x="0" y="0" width="520" height="148" rx="10" fill="#79ff8a" opacity="0.06"/>
+    <g font-family="Tahoma, Geneva, sans-serif">
+      <text x="14" y="46" font-size="36" fill="#79ff8a" font-weight="700">Glow Mud Shampoo</text>
+      <text x="14" y="86" font-size="12" fill="#79ff8a" opacity="0.9">Lather up and glow softly in dimly lit rooms.</text>
+      <text x="14" y="112" font-size="11" fill="#79ff8a" opacity="0.85">Harmless on hair. Slightly baffling to neighbors.</text>
+    </g>
+    <g transform="translate(420,24)">
+      <circle cx="20" cy="20" r="20" fill="#ffd86b"/>
+      <rect x="-4" y="56" width="48" height="24" rx="6" fill="#b88cff"/>
+    </g>
+  </g>
+</svg>
