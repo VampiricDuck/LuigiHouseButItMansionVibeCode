@@ -39,6 +39,15 @@ function openMinigame(name){
     try{
       const maybeCleanup = MiniGames.Minesweeper.start(container, (res)=>{
         console.log('Minesweeper finished', res);
+        // Relay result to the minigame handler callbacks (if set by launchMinigame)
+        try{
+          const cb = window.currentMinigameCallbacks;
+          if(cb){
+            if(res && res.result === 'win' && typeof cb.onWin === 'function') cb.onWin();
+            else if(res && res.result === 'lose' && typeof cb.onLose === 'function') cb.onLose();
+            try{ window.currentMinigameCallbacks = null; }catch(e){}
+          }
+        }catch(e){ console.error('Error relaying minigame result', e); }
         closeMinigame();
       });
       if(typeof maybeCleanup === 'function') currentCleanup = maybeCleanup;
@@ -48,6 +57,14 @@ function openMinigame(name){
     // Snake.start returns a cleanup; keep track to stop it
     currentCleanup = MiniGames.Snake.start(container, (res)=>{
       console.log('Snake finished', res);
+      try{
+        const cb = window.currentMinigameCallbacks;
+        if(cb){
+          if(res && res.result === 'win' && typeof cb.onWin === 'function') cb.onWin();
+          else if(res && res.result === 'lose' && typeof cb.onLose === 'function') cb.onLose();
+          try{ window.currentMinigameCallbacks = null; }catch(e){}
+        }
+      }catch(e){ console.error('Error relaying minigame result', e); }
       closeMinigame();
     });
   }
@@ -57,6 +74,14 @@ function openMinigame(name){
       try{
         const maybeCleanup = MiniGames.Tetris.start(container, (res)=>{
           console.log('Tetris finished', res);
+          try{
+            const cb = window.currentMinigameCallbacks;
+            if(cb){
+              if(res && res.result === 'win' && typeof cb.onWin === 'function') cb.onWin();
+              else if(res && res.result === 'lose' && typeof cb.onLose === 'function') cb.onLose();
+              try{ window.currentMinigameCallbacks = null; }catch(e){}
+            }
+          }catch(e){ console.error('Error relaying minigame result', e); }
           closeMinigame();
         });
         if(typeof maybeCleanup === 'function') currentCleanup = maybeCleanup;
